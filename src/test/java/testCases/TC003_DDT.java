@@ -10,7 +10,7 @@ import utilities.DataProviders;
 public class TC003_DDT extends BaseClass{
 	
 	@Test(dataProvider="excelData", dataProviderClass=DataProviders.class, groups={"Regression", "Master"})
-	public void verify_dataDriveTest(String username, String email, String phonenumber, String gender, String day) throws InterruptedException
+	public void verify_dataDriveTest(String username, String email, String phonenumber, String gender, String day, String country) throws InterruptedException
 	{
 		HomePage hp=new HomePage(driver);
 		HandleRadioButtonsCheckBox hrc= new HandleRadioButtonsCheckBox(driver);
@@ -42,14 +42,77 @@ public class TC003_DDT extends BaseClass{
 		logger.info("Day checkbox selected"+ day);			
 		
 		
-		boolean targetPage=hp.isMyHomePageExists();
-		Assert.assertEquals(targetPage, true, "HomePage Failed to Load");
+		System.out.print(hp.verifyHomePageLabelIsDisplayed());
 		logger.info("Homepage label verified");
 		
 		Thread.sleep(10000);
 		
+		
+		
+		
+		
+		
+		
+		
+		
+// 				hp.jsClickHomePagePromptAlert();
+//				logger.info("Js method clicked on prompt alert ");
+//				Thread.sleep(10000);
+				
+//				hp.actClickHomePageConfirmationtAlert();
+//				logger.info("Act method clicked on confirmation alert ");
+//				Thread.sleep(10000);
+				
+//				hp.implicitWaitAndClickHomePagePromptAlert();
+//				logger.info("implicit method clicked on prompt alert ");
+//				Thread.sleep(10000);
+				
+//				hp.explicitWaitAndClickHomePageConfirmationtAlert();
+//				logger.info("explicit method clicked on prompt alert ");
+//				Thread.sleep(5000);
+				
+//				hp.explicitWait_IsDiplayed_HomePageLabel();		
+//				logger.info("home page label verified using explicit wait");
+//				BaseClass.implicitWait(driver, 5);
+//				
+//				System.out.print(hp.getText_HomePageSubHeader());
+//				logger.info("homepage sub header has been printed");
+//				
+//				hp.fluentWaitAndClickHomePageConfirmationtAlert();
+//				logger.info("fluent method clicked on prompt alert ");
+//				BaseClass.implicitWait(driver, 5);
+//				Thread.sleep(5000);
+			
+		
+		
+				hp.selectContryDropDown(country);
+				logger.info("country drop down has been selected to India");
+				Thread.sleep(5000);
 	
-	}
+		     
+//		        hp.jsScrollToElementAndClick_homePagePromptAlert();
+//		        logger.info("clicked on prompt alert using js click");
+//		        Thread.sleep(5000);
+		
+//				hp.clickUploadSingleFile();
+//				logger.info("click on upload single file button");
+//				Thread.sleep(5000);
+		
+//				hp.actClick_ClickUploadSingleFile();
+//				logger.info("click on upload single file button using actions class");
+//				Thread.sleep(5000);
+//		
+//				hp.actDoubleClick_wednesdayCheckbox();
+//				logger.info("double clicked");
+//				Thread.sleep(5000);
+		
+		
+		       
+		
+		
+		
+		
+		}
 		catch(Exception e)
 		{
 			logger.error("Test Failed");

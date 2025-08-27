@@ -8,11 +8,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import pageObjects.HomePage;
-import pageObjects.BasePage;
+
 
 public class TC001_HomePageTest extends BaseClass {
-	
-		
+			
 	@Test(groups= {"Sanity", "Master"})
 	public void verifyHomePage()
 	{
@@ -21,6 +20,7 @@ public class TC001_HomePageTest extends BaseClass {
 		try
 		{		
 		HomePage hp=new HomePage(driver);
+		
 				
 		hp.clickHome();
 		logger.info("Clicked on Homepage");
@@ -41,6 +41,51 @@ public class TC001_HomePageTest extends BaseClass {
 		boolean targetPage=hp.isMyHomePageExists();
 		Assert.assertEquals(targetPage, true, "HomePage Failed to Load");
 		logger.info("Homepage label verified");
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//hp.jsClickHomePagePromptAlert();
+		//logger.info("Js method clicked on prompt alert ");
+		//Thread.sleep(10000);
+		
+		//hp.actClickHomePageConfirmationtAlert();
+		//logger.info("Act method clicked on confirmation alert ");
+		//Thread.sleep(10000);
+		
+//		hp.implicitWaitAndClickHomePagePromptAlert();
+//		logger.info("implicit method clicked on prompt alert ");
+//		Thread.sleep(10000);
+		
+//		hp.explicitWaitAndClickHomePageConfirmationtAlert();
+//		logger.info("explicit method clicked on prompt alert ");
+//		Thread.sleep(5000);
+		
+//		hp.explicitWait_IsDiplayed_HomePageLabel();		
+//		logger.info("home page label verified using explicit wait");
+//		BaseClass.implicitWait(driver, 5);
+//		
+//		System.out.print(hp.getText_HomePageSubHeader());
+//		logger.info("homepage sub header has been printed");
+//		
+//		hp.fluentWaitAndClickHomePageConfirmationtAlert();
+//		logger.info("fluent method clicked on prompt alert ");
+//		BaseClass.implicitWait(driver, 5);
+//		Thread.sleep(5000);
+		
+		
 		
 		
 		

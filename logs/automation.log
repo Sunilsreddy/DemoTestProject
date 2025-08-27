@@ -1,0 +1,20 @@
+2025-08-24 15:08:14 INFO  Utils:112 - [TestNG] Running:
+  C:\Users\user\eclipse-workspace\DemoTestProject\testng.xml
+
+2025-08-24 15:08:21 INFO  TC003_DDT:52 - Application url loaded
+2025-08-24 15:08:23 INFO  TC003_DDT:18 - Started TC003_DDT Test Execution Started
+2025-08-24 15:08:27 INFO  TC003_DDT:24 - Clicked on Homepage
+2025-08-24 15:08:27 INFO  TC003_DDT:27 - Entered usernamebob1
+2025-08-24 15:08:27 INFO  TC003_DDT:31 - Entered emailtest1@mail.com
+2025-08-24 15:08:27 INFO  TC003_DDT:35 - Entered phone numbertestphone1
+2025-08-24 15:08:27 INFO  TC003_DDT:39 - Gender radion button selectedMale
+2025-08-24 15:08:28 INFO  TC003_DDT:42 - Day checkbox selectedSunday
+2025-08-24 15:08:28 INFO  TC003_DDT:47 - Homepage label verified
+2025-08-24 15:08:38 INFO  TC003_DDT:18 - Started TC003_DDT Test Execution Started
+2025-08-24 15:08:41 INFO  TC003_DDT:24 - Clicked on Homepage
+2025-08-24 15:08:41 INFO  TC003_DDT:27 - Entered usernamebobby2
+2025-08-24 15:08:41 INFO  TC003_DDT:31 - Entered emailtest2@mail.com
+2025-08-24 15:08:41 INFO  TC003_DDT:35 - Entered phone numbertestphone2
+2025-08-24 15:08:41 INFO  TC003_DDT:39 - Gender radion button selectedFemale
+2025-08-24 15:08:41 INFO  TC003_DDT:42 - Day checkbox selectedMonday
+2025-08-24 15:08:42 INFO  TC003_DDT:47 - Homepage label verified

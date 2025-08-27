@@ -2,6 +2,8 @@ package pageObjects;
 
 import java.time.Duration;
 
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,9 +13,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
 public class HomePage extends BasePage {
+	int small_Wait=5; int medium_Wait=10; int long_Wait=20;
 	
 	public HomePage(WebDriver driver)
 	{
@@ -41,7 +46,45 @@ public class HomePage extends BasePage {
 	@CacheLookup
 	WebElement homePageLabel;
 	
+	@FindBy(how=How.XPATH, using="//*[@id=\"header-inner\"]/div[2]/p/span")
+	@CacheLookup
+	WebElement homePageSubHeader;
 	
+	@FindBy(how=How.XPATH, using="//*[@id=\"alertBtn\"]")
+	@CacheLookup
+	WebElement homeSimpleAlert;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"promptBtn\"]")
+	@CacheLookup
+	WebElement homePagePromptAlert;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"confirmBtn\"]")
+	@CacheLookup
+	WebElement homePageConfirmationptAlert;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"country\"]")
+	@CacheLookup
+	WebElement country;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"singleFileForm\"]/button")
+	@CacheLookup
+	WebElement uploadSingleFile;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"wednesday\"]")
+	@CacheLookup
+	WebElement wednesdayCheckbox;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"content\"]/div/ul/li[1]/button")
+	@CacheLookup
+	WebElement simpleAlert;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"content\"]/div/ul/li[2]/button")
+	@CacheLookup
+	WebElement confirmationAlert;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"content\"]/div/ul/li[3]/button")
+	@CacheLookup
+	WebElement promptAlert;
 	
 	public void clickHome()
 	{
@@ -61,6 +104,8 @@ public class HomePage extends BasePage {
 		
 	}
 	
+	
+	
 	public void enterName(String username)
 	{
 		name.sendKeys(username);
@@ -79,20 +124,100 @@ public class HomePage extends BasePage {
 		
 	}
 		
-	public boolean isMyHomePageExists() 
+	
+	public String verifyHomePageLabelIsDisplayed()
 	{
-		try
-		{
-			return(homePageLabel.isDisplayed());
-		}
-		catch(Exception e)
-		{
-			return false;
-		}
+		BasePage.verifyLabelIsDisplayed(driver, homePageLabel);
+		return homePageLabel.getText();
+	}
+	
+	public String getText_HomePageSubHeader()
+	{
+		return homePageSubHeader.getText();
+		
+	}
+	
+	
+	public void selectContryDropDown(String value)
+	{
+	    BasePage.jsScrollToElement(driver, country);
+		Select db  = new Select(driver.findElement(By.xpath("//*[@id=\"country\"]")));
+		db.selectByVisibleText(value);
 	}
 	
 	
 	
 	
+		
+	public void jsClickHomePagePromptAlert()
+	{
+		BasePage.jsClick(driver, homePagePromptAlert);
+	}
+	
+	
+	public void actClickHomePageConfirmationtAlert()
+	{
+		BasePage.actClick(homePageConfirmationptAlert, driver);
+	}
+	
+	
+	public void implicitWaitAndClickHomePagePromptAlert()
+	{
+		BasePage.implicitWaitAndClick(driver, homePagePromptAlert, small_Wait);
+	}
+	
+	public void explicitWait_IsDiplayed_HomePageLabel()
+	{
+		BasePage.explicitWait_IsDiplayed(driver, homePageLabel, small_Wait);
+	}
+	
+	public void explicitWaitAndClickHomePageConfirmationtAlert()
+	{
+		BasePage.explicitWaitAndClick(driver, homePageConfirmationptAlert, small_Wait);
+	}
+	
+	public void fluentWaitAndClickHomePageConfirmationtAlert()
+	{
+		BasePage.fluentWaitAndClick(driver, homePageConfirmationptAlert, medium_Wait);
+	}
+	
+	public void jsScrollToElementAndClick_homePagePromptAlert()
+	{
+		BasePage.jsScrollToElementAndClick(driver, homePagePromptAlert);
+	}
+	
+	
+	public void clickUploadSingleFile()
+	{
+		BasePage.actMoveToElement(driver, uploadSingleFile);
+		uploadSingleFile.click();
+	}
+	
+	public void actClick_ClickUploadSingleFile()
+	{
+		BasePage.actMoveToElementAndClick(driver, uploadSingleFile);
+	}
+	
+	public void actDoubleClick_wednesdayCheckbox()
+	{
+		BasePage.actDoubleClick(driver, wednesdayCheckbox);
+	}
+	
+	public void clickSimpleAlert() throws InterruptedException
+	{
+		simpleAlert.click();
+		BasePage.handleSimpleAlert(driver, small_Wait);
+	}
+	
+	public void clickConfirmationAlert() throws InterruptedException
+	{
+		confirmationAlert.click();
+		BasePage.handleConfirmationAlert(driver, small_Wait);
+	}
+	
+	public void clickPromptAlert(String value) throws InterruptedException
+	{
+		promptAlert.click();
+		BasePage.handlePromptAlert(driver, small_Wait, value );
+	}
 }
-;
