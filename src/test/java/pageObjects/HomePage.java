@@ -1,6 +1,8 @@
 package pageObjects;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -86,6 +88,115 @@ public class HomePage extends BasePage {
 	@CacheLookup
 	WebElement promptAlert;
 	
+	@FindBy(how=How.XPATH, using="//*[@id=\"colors\"]")
+	@CacheLookup
+	WebElement colors;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"animals\"]")
+	@CacheLookup
+	WebElement sortedList;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"HTML3\"]/div[1]/div/button")
+	@CacheLookup
+	WebElement pointMe;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"HTML3\"]/div[1]/div/div/a[1]")
+	@CacheLookup
+	WebElement mobiles;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\\\"HTML1\\\"]/div[1]/table/tbody")
+	@CacheLookup
+	WebElement table;
+	
+	@FindBy(how=How.XPATH, using="//*[@id=\"HTML4\"]/div[1]/button")
+	@CacheLookup
+	WebElement newTabButton;
+	
+	
+//--------------------COMMMON METHODS------------------------------------------------------------------------------
+	
+	//Handle dropdown for country
+	public void selectContryDropDown(String value)
+	{
+	    BasePage.jsScrollToElement(driver, country);
+		Select db  = new Select(driver.findElement(By.xpath("//*[@id=\"country\"]")));
+		db.selectByVisibleText(value);
+	}
+	
+	//Print all dropdown values for country
+	public void getDropDownOptions()
+	{
+		BasePage.jsScrollToElement(driver, country);
+		Select db  = new Select(driver.findElement(By.xpath("//*[@id=\"colors\"]")));
+		List<WebElement> allOptions = db.getOptions();
+		for (WebElement option : allOptions) {
+			System.out.println(option.getText());
+	    }
+	}
+	
+	
+	//Handle dropdown for colors
+	public void selectColorsDropDown(String value)
+	{
+	    BasePage.jsScrollToElement(driver, colors);
+		Select db  = new Select(driver.findElement(By.xpath("//*[@id=\"colors\"]")));
+		db.selectByVisibleText(value);
+	}
+	
+	//Handle drop down for sorted list animals
+	public void selectSortedListDropDown(String value)
+	{
+	    BasePage.jsScrollToElement(driver, sortedList);
+		Select db  = new Select(driver.findElement(By.xpath("//*[@id=\"animals\"]")));
+		db.selectByVisibleText(value);
+	}
+    
+	// Print full table data
+	public static void readFullTable(WebDriver driver)
+	{
+		WebElement table = driver.findElement(By.xpath("//*[@id=\"HTML1\"]/div[1]/table/tbody")); 
+		List<WebElement> rows = table.findElements(By.tagName("tr"));
+		// print complete table data 
+		for (WebElement row : rows) { 
+	        List<WebElement> cols = row.findElements(By.tagName("td"));     
+	    for (WebElement col : cols) {            
+	             System.out.print(col.getText() + "\t"); 
+	           } 
+	        System.out.println();
+		}
+	}
+	
+	//Print specific column details in a table 
+	public static void readColumnInTable(WebDriver driver)
+	{
+		WebElement table = driver.findElement(By.xpath("//*[@id=\"HTML1\"]/div[1]/table/tbody")); 
+		List<WebElement> rows = table.findElements(By.tagName("tr"));
+		int rowsCount = rows.size();
+		// print specific column data by altering xpath like below. 
+	     for (int i=2; i<=rowsCount; i++)
+	     {
+	    	 String names= driver.findElement(By.xpath("//*[@id=\"HTML1\"]/div[1]/table/tbody/tr["+i+"]/td[2]")).getText();
+	    	 System.out.print(names + "\t");
+	     }
+	     System.out.println();
+	}
+	
+	
+	
+	
+	
+//---------------------------------------------------------------------------------------------------------------------------
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public void clickHome()
 	{
 		lnkHome.click();
@@ -127,6 +238,7 @@ public class HomePage extends BasePage {
 	
 	public String verifyHomePageLabelIsDisplayed()
 	{
+		BasePage.jsScrollToElement(driver, homePageLabel);
 		BasePage.verifyLabelIsDisplayed(driver, homePageLabel);
 		return homePageLabel.getText();
 	}
@@ -138,17 +250,14 @@ public class HomePage extends BasePage {
 	}
 	
 	
-	public void selectContryDropDown(String value)
+	
+	
+	public void mouseHoverClickMobile()
 	{
-	    BasePage.jsScrollToElement(driver, country);
-		Select db  = new Select(driver.findElement(By.xpath("//*[@id=\"country\"]")));
-		db.selectByVisibleText(value);
+		BasePage.jsScrollToElement(driver, pointMe);
+		BasePage.mouseHoverClick(driver, pointMe, mobiles);
 	}
 	
-	
-	
-	
-		
 	public void jsClickHomePagePromptAlert()
 	{
 		BasePage.jsClick(driver, homePagePromptAlert);

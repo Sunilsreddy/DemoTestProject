@@ -1,7 +1,11 @@
 package pageObjects;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Alert;
@@ -168,6 +172,14 @@ public class BasePage {
 	   //alert.dismiss();
 	    }
 		
+		
+		public static void mouseHoverClick(WebDriver driver, WebElement mainElement, WebElement subElementToClick) 
+		{
+			Actions action = new Actions(driver);
+			action.moveToElement(mainElement).contextClick().perform();
+			subElementToClick.click();
+		}
+		
 		// Verify page label or header values
 		public static boolean verifyLabelIsDisplayed(WebDriver driver, WebElement element ) 
 		{
@@ -180,7 +192,80 @@ public class BasePage {
 				return false;
 			}
 		}
-	
+		
+		
+		
+//----Switching tabs are below two functions 'switchToNewTab' and 'switchToOldTab'--------------------------------------	
+			public String oldTab;
+			public void switchToNewTab(WebDriver driver) throws InterruptedException
+			{		
+				 //BasePage.jsScrollToElement(driver, newTabButton);
+				 		 
+				// considering that there is only one tab opened in that point.
+			    oldTab = driver.getWindowHandle();
+			    
+			    ArrayList<String> newTab = new ArrayList<String>(driver.getWindowHandles());
+			    newTab.remove(oldTab);
+			    
+			    // change focus to new tab
+			    driver.switchTo().window(newTab.get(0));
+			    //System.out.println(driver.getTitle());
+			    
+			    // change focus back to old tab
+			    //driver.switchTo().window(oldTab);
+			    //System.out.print(driver.findElement(By.xpath("//*[@id=\"header-inner\"]/div[1]/h1")).getText());
+			}	
+			
+			
+			public void switchToOldTab(WebDriver driver) throws InterruptedException
+			{
+				// change focus back to old tab
+			    driver.switchTo().window(oldTab);
+			    //System.out.println(driver.getTitle());
+			}
+//-------------------------------------------------------------------------------------------------------------------
+		
+			
+//----Switching multiple windows are below two functions 'switchNewWindow' and 'switchOldWindow'--------------------------------------				
+		public String mainWindow;	
+		public void switchNewWindow(WebDriver driver) throws InterruptedException
+		{
+			String mainWindow = driver.getWindowHandle();
+			Set<String> s1 = driver.getWindowHandles();
+			Iterator<String> i1 = s1.iterator();
+			
+			while (i1.hasNext()) {
+	            String ChildWindow = i1.next();
+	                if (!mainWindow.equalsIgnoreCase(ChildWindow)) {
+	                driver.switchTo().window(ChildWindow);
+	                driver.manage().window().maximize();
+	                //System.out.print(driver.getTitle());	
+	              }
+	            }
+		//  Switch back to the main window which is the parent window.
+	        //driver.switchTo().window(mainWindow);
+		}
+		
+		
+		public void switchOldWindow(WebDriver driver)
+		{
+		//  Switch back to the main window which is the parent window.
+	        driver.switchTo().window(mainWindow);
+	        //System.out.print(driver.getTitle());
+		}
+
+//-------------------------------------------------------------------------------------------------------------------------	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 }
 	
 	

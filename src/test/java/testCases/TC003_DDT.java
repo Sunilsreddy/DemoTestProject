@@ -1,15 +1,19 @@
 package testCases;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import pageObjects.HandleRadioButtonsCheckBox;
 import pageObjects.HomePage;
+import pageObjects.BasePage;
 import utilities.DataProviders;
 
 public class TC003_DDT extends BaseClass{
+	 
 	
-	@Test(dataProvider="excelData", dataProviderClass=DataProviders.class, groups={"Regression", "Master"})
+	@Test(dataProvider="excelData", dataProviderClass=DataProviders.class, groups={"Regression", "Master"}, priority=1)
 	public void verify_dataDriveTest(String username, String email, String phonenumber, String gender, String day, String country) throws InterruptedException
 	{
 		HomePage hp=new HomePage(driver);
@@ -45,15 +49,9 @@ public class TC003_DDT extends BaseClass{
 		System.out.print(hp.verifyHomePageLabelIsDisplayed());
 		logger.info("Homepage label verified");
 		
-		Thread.sleep(10000);
+		Thread.sleep(5000);
 		
-		
-		
-		
-		
-		
-		
-		
+				
 		
 // 				hp.jsClickHomePagePromptAlert();
 //				logger.info("Js method clicked on prompt alert ");
@@ -88,7 +86,11 @@ public class TC003_DDT extends BaseClass{
 				hp.selectContryDropDown(country);
 				logger.info("country drop down has been selected to India");
 				Thread.sleep(5000);
-	
+				
+//				hp.getDropDownOptions();
+//				logger.info("Printed all dropdown values");
+//				Thread.sleep(5000);
+////	
 		     
 //		        hp.jsScrollToElementAndClick_homePagePromptAlert();
 //		        logger.info("clicked on prompt alert using js click");
@@ -106,11 +108,33 @@ public class TC003_DDT extends BaseClass{
 //				logger.info("double clicked");
 //				Thread.sleep(5000);
 		
+//				hp.selectColorsDropDown("Green");
+//				logger.info("colors drop down has been selected to Green");
+//						       
+//				hp.selectSortedListDropDown("Dog");
+//				logger.info("sorted list drop down has been selected to Dog");
+//				Thread.sleep(5000);
 		
-		       
+//				hp.mouseHoverClickMobile();
+//				logger.info("mouse houver click has done for mobiles");
+//				Thread.sleep(5000);
 		
 		
+//		 		//Click on some button or link to open new tab
+//	    		driver.findElement(By.xpath("//*[@id=\"HTML4\"]/div[1]/button")).click();
+//				hp.switchToNewTab(driver);
+//				hp.switchToOldTab(driver);
+//				logger.info("switch tabs are working");
+//				Thread.sleep(5000);
 		
+//				//Click on some button or link to open new window
+//				driver.findElement(By.xpath("//*[@id=\"PopUp\"]")).click();
+//				Thread.sleep(5000);
+//				hp.switchNewWindow(driver);
+//				Thread.sleep(5000);
+//				hp.switchOldWindow(driver);
+//				Thread.sleep(5000);
+				
 		
 		}
 		catch(Exception e)
@@ -119,10 +143,37 @@ public class TC003_DDT extends BaseClass{
 			logger.debug("Debug logs");
 			
 		}
+	}
 	
 	
 	
-}
-
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	
+//	@Test(dataProvider="excelData", dataProviderClass=DataProviders.class, groups={"Regression", "Master"}, priority=2)
+//	public void myMethod(String username, String email, String phonenumber, String gender, String day, String country)
+//	{
+//		System.out.println(username);
+//		System.out.println(email);
+//		System.out.println(phonenumber);
+//		System.out.println(gender);
+//		System.out.println(day);
+//		System.out.println(country);
+//	}
+//	
+			
 }

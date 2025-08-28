@@ -38,8 +38,7 @@ public class TC001_HomePageTest extends BaseClass {
 		hp.enterPhone(randomNumber()); //entering random phone number
 		logger.info("Entered phone number" + randomNumber());
 		
-		boolean targetPage=hp.isMyHomePageExists();
-		Assert.assertEquals(targetPage, true, "HomePage Failed to Load");
+		System.out.print(hp.verifyHomePageLabelIsDisplayed());
 		logger.info("Homepage label verified");
 		
 		

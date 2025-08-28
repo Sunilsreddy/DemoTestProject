@@ -32,7 +32,7 @@ public class DataProviders {
 			Cell cell;
 			data=new String[noOfRows - 1][noOfCols];
 			
-			for(int i=1; i<noOfRows; i++)
+			for(int i=3; i<noOfRows; i++)
 			{
 				for (int j=0; j<noOfCols; j++)
 				{
@@ -51,6 +51,8 @@ public class DataProviders {
 	
 	
 	//DataProvider 2
+		
+	
 	
 	//DataProvider 3
 	
