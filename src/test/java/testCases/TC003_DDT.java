@@ -1,8 +1,16 @@
 package testCases;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import pageObjects.HandleRadioButtonsCheckBox;
@@ -11,14 +19,13 @@ import pageObjects.BasePage;
 import utilities.DataProviders;
 
 public class TC003_DDT extends BaseClass{
-	 
+	 	 
 	
-	@Test(dataProvider="excelData", dataProviderClass=DataProviders.class, groups={"Regression", "Master"}, priority=1)
-	public void verify_dataDriveTest(String username, String email, String phonenumber, String gender, String day, String country) throws InterruptedException
+	@Test(dataProvider="excelData", dataProviderClass=DataProviders.class, groups={"Regression", "Master"})
+	public void verify_FirstTest(String username, String email, String phonenumber, String gender, String day, String country, String test, String testt, String date) throws InterruptedException
 	{
 		HomePage hp=new HomePage(driver);
-		HandleRadioButtonsCheckBox hrc= new HandleRadioButtonsCheckBox(driver);
-		
+		HandleRadioButtonsCheckBox hrc= new HandleRadioButtonsCheckBox(driver);		
 		logger.info("Started TC003_DDT Test Execution Started");
 		
 		try
@@ -29,6 +36,7 @@ public class TC003_DDT extends BaseClass{
 		
 		hp.enterName(username); //entering user name from excel sheet
 		logger.info("Entered username" + username); 
+		BasePage.captureScreenshot(driver);
 		
 		
 		hp.enterEmail(email); //entering email from excel sheet
@@ -80,13 +88,21 @@ public class TC003_DDT extends BaseClass{
 //				logger.info("fluent method clicked on prompt alert ");
 //				BaseClass.implicitWait(driver, 5);
 //				Thread.sleep(5000);
-			
-		
-		
-				hp.selectContryDropDown(country);
+
+		        hp.selectContryDropDown(country);
 				logger.info("country drop down has been selected to India");
-				Thread.sleep(5000);
+				Thread.sleep(3000);
+				BasePage.captureScreenshot(driver);
 				
+				
+				hp.enterDate(driver, date);
+				logger.info("date has been entered manually from excel sheet");
+				Thread.sleep(3000);
+				
+//				hp.enterCurrentDate(driver);
+//				logger.info("current date has been entered");
+//				Thread.sleep(3000);
+//				
 //				hp.getDropDownOptions();
 //				logger.info("Printed all dropdown values");
 //				Thread.sleep(5000);
@@ -134,7 +150,9 @@ public class TC003_DDT extends BaseClass{
 //				Thread.sleep(5000);
 //				hp.switchOldWindow(driver);
 //				Thread.sleep(5000);
-				
+		
+		System.out.println(test);
+		System.out.println(testt);
 		
 		}
 		catch(Exception e)
@@ -143,16 +161,13 @@ public class TC003_DDT extends BaseClass{
 			logger.debug("Debug logs");
 			
 		}
-	}
+		
+	}	
+
 	
 	
 	
-	
-	
-	
-	
-	
-	
+		
 	
 	
 	
@@ -177,3 +192,5 @@ public class TC003_DDT extends BaseClass{
 //	
 			
 }
+
+

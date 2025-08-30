@@ -17,6 +17,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 
 public class HomePage extends BasePage {
@@ -112,6 +114,10 @@ public class HomePage extends BasePage {
 	@CacheLookup
 	WebElement newTabButton;
 	
+	@FindBy(how=How.XPATH, using="//input[@id='datepicker']")
+	@CacheLookup
+	WebElement date;
+	
 	
 //--------------------COMMMON METHODS------------------------------------------------------------------------------
 	
@@ -182,8 +188,27 @@ public class HomePage extends BasePage {
 	}
 	
 	
+	//enter selected date manually by user input
+	public void enterDate(WebDriver driver, String enterDate)
+	{
+		BasePage.jsScrollToElement(driver, date);
+		WebElement dateField = driver.findElement(By.xpath("//*[@id=\"datepicker\"]")); // Replace with actual locator
+		dateField.sendKeys(enterDate); // Enter date in the expected format		
+	}
 	
-	
+	//enter current date automatically 
+	public void enterCurrentDate(WebDriver driver)
+	{
+		// Get the current date
+		LocalDate currentDate = LocalDate.now();
+		// Define the desired date format (e.g., "MM/dd/yyyy")
+	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+	    String formattedDate = currentDate.format(formatter);
+		
+	    BasePage.jsScrollToElement(driver, date);
+		WebElement dateField = driver.findElement(By.xpath("//*[@id=\"datepicker\"]")); // Replace with actual locator
+		dateField.sendKeys(formattedDate); // Enter date in the expected format	
+	}
 	
 //---------------------------------------------------------------------------------------------------------------------------
 	
