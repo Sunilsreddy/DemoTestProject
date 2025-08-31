@@ -118,6 +118,20 @@ public class HomePage extends BasePage {
 	@CacheLookup
 	WebElement date;
 	
+	@FindBy(xpath="/html/body/div[4]/div[2]/div[2]/div[2]/div[2]/div[2]/div[2]/div/div[4]/div[1]/div/div/div[1]/div[1]/div/div/div/div/div[2]/div[3]/div[1]/input")
+	WebElement maleGender;
+	
+	@FindBy(xpath="//*[@id=\"post-body-1307673142697428135\"]//*[contains(text(),'Female')]")
+	WebElement femaleGender;
+
+	@FindBy(xpath="//*[@id=\"post-body-1307673142697428135\"]//*[contains(text(),'Sunday')]")
+	WebElement daySunday;
+	
+	@FindBy(xpath="//*[@id=\"post-body-1307673142697428135\"]//*[contains(text(),'Monday')]")
+	WebElement dayMonday;
+	
+	
+	
 	
 //--------------------COMMMON METHODS------------------------------------------------------------------------------
 	
@@ -141,7 +155,7 @@ public class HomePage extends BasePage {
 	}
 	
 	
-	//Handle dropdown for colors
+	//Handle dropdown for colors listbox
 	public void selectColorsDropDown(String value)
 	{
 	    BasePage.jsScrollToElement(driver, colors);
@@ -210,8 +224,88 @@ public class HomePage extends BasePage {
 		dateField.sendKeys(formattedDate); // Enter date in the expected format	
 	}
 	
-//---------------------------------------------------------------------------------------------------------------------------
+	//Switch to frame
+	public void switchToFrame(WebDriver driver)
+	{
+	    // Interact with an element inside the iframe
+		WebElement elementInFrame = driver.findElement(By.xpath("/html[1]/frameset[1]/frame[1]"));
+		driver.switchTo().frame(elementInFrame);		
+	}
 	
+	//Switch to main window from frames
+	public void switchToMainWindowFromFrame(WebDriver driver)
+	{
+		// Switch back to the default content
+		driver.switchTo().defaultContent();
+	}
+	
+	//Get text for any element
+	public String getText_Label()
+	{
+		return homePageSubHeader.getText();
+		
+	}
+	
+	//Select gender function
+	public void genderSelect(String gender)
+	{
+		if(!(gender.isEmpty()))
+		{
+		if(gender.toLowerCase()=="male")
+		{
+	           if(!maleGender.isSelected())
+	         {
+	    	   maleGender.click();
+	         }
+	      else if(gender.toLowerCase()=="female")
+	      {
+	    	  if(!femaleGender.isSelected())
+		      {
+	    		  femaleGender.click();
+		      }
+	      }
+		}
+		}
+	}
+	
+	//select day function
+	public void daySelect(String day)
+	{
+		if(!(day.isEmpty()))
+		{
+		switch (day.toLowerCase()) {
+		case "sunday":
+			if ( !daySunday.isSelected() )
+			{
+				daySunday.click();
+			} break;
+		case "monday":
+			if ( !dayMonday.isSelected() )
+			{
+				dayMonday.click();
+			} break;
+		default:
+		    System.out.println("Select correct day");
+		}
+	}
+	}
+	
+	
+	//File upload (Single file)
+	public void fileUpload(WebDriver driver, String fileLocation) 
+	{
+	driver.findElement(By.xpath("//input[@id='filesToUpload']")).sendKeys(fileLocation);
+	}
+	
+	
+	//Multiple files upload
+	public void fileUploadMultiple(WebDriver driver, String fileLocation1, String fileLocation2)
+	{
+		driver.findElement(By.xpath("//input[@id='filesToUpload']")).sendKeys(fileLocation1+"\n"+fileLocation2);
+	}
+	
+//---------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------
 	
 	
 	
@@ -244,19 +338,27 @@ public class HomePage extends BasePage {
 	
 	public void enterName(String username)
 	{
+		if(!(username.isEmpty()))
+		{
 		name.sendKeys(username);
-		
+		}
 	}
 	
 	public void enterEmail(String userEmail)
 	{
-		email.sendKeys(userEmail);
+		if(!(userEmail.isEmpty()))
+		{
+			email.sendKeys(userEmail);
+		}
 		
 	}
 	
 	public void enterPhone(String userPhone)
 	{
-		phone.sendKeys(userPhone);
+		if(!(userPhone.isEmpty()))
+		{
+			phone.sendKeys(userPhone);
+		}
 		
 	}
 		
@@ -274,9 +376,7 @@ public class HomePage extends BasePage {
 		
 	}
 	
-	
-	
-	
+		
 	public void mouseHoverClickMobile()
 	{
 		BasePage.jsScrollToElement(driver, pointMe);

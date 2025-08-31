@@ -1,6 +1,7 @@
 package pageObjects;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -8,8 +9,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
 import java.util.Date;
 
@@ -31,6 +34,10 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class BasePage {
 	
@@ -51,7 +58,7 @@ public class BasePage {
 	
 	
 	
-	//----COMMON METHODS-----------------------------------------------------------------------------------------
+//----COMMON METHODS-------------------------------------------------------------------------------------------------------
 	//Java script click on element
 	public static void jsClick(WebDriver driver, WebElement elementToClick) {
 		JavascriptExecutor jse = (JavascriptExecutor)driver;
@@ -270,9 +277,9 @@ public class BasePage {
 		//Method to decode password
 		//use the below decodeString method like below ex:
 		//driver.findElement(By.xpath("//@id-password").sendKeys(decodeString("----------")
-		public static String decodeString(String password)
+		public static String decodeString(String encodedPassword)
 		{
-			byte[] decodedString=Base64.decodeBase64(password);
+			byte[] decodedString=Base64.decodeBase64(encodedPassword);
 			return(new String(decodedString));
 		}		
 		
@@ -287,12 +294,67 @@ public class BasePage {
 		
 
 		
+       //Write test results to excel sheet
+		public static void writeExcelTestResults(WebDriver driver, String testName, int optyNumber, int quoteNumber, String testRusult ) throws IOException
+		{
+			// workbook object
+	        XSSFWorkbook workbook = new XSSFWorkbook();
+	        // spreadsheet object
+	        XSSFSheet spreadsheet = workbook.createSheet("Test Execution Results");
+	        // creating a row object
+	        XSSFRow row;
+	        
+	     // This data needs to be written (Object[])
+	        Map<String, Object[]> studentData = new TreeMap<String, Object[]>();
+	        studentData.put("1", new Object[] { "Test Name", "Opportunity Number", "Quote Number", "Execution Status" });
+	        studentData.put("2", new Object[] { testName, Integer.toString(optyNumber), Integer.toString(quoteNumber),testRusult });
+	       
+	        Set<String> keyid = studentData.keySet();
+	        int rowid = 0;
+	        
+	     // writing the data into the sheets...
+	        for (String key : keyid) 
+	        {
+	        	row = spreadsheet.createRow(rowid++);
+	            Object[] objectArr = studentData.get(key);
+	            int cellid = 0;
+
+	            for (Object obj : objectArr) 
+	            {
+	                Cell cell = row.createCell(cellid++);
+	                cell.setCellValue((String)obj);
+	            }
+	        }
+	        // writing the workbook into the file...
+	    	// Now you can do whatever you need to do with it, for example copy somewhere
+			String timeNote=new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());			
+	        FileOutputStream out = new FileOutputStream(new File(".\\excelTestResults\\Test_Results"+"_"+timeNote+".xlsx"));
+	        workbook.write(out);
+	        out.close();
+		}
+		
+		
+		
+		
+		
+		
+		
+//--------------------------------------------------------------------------------------------------------------------------------		
+		
+		
+
+
 
 
 
 
 
 }
+
+
+
+
+
 		
 		
 		

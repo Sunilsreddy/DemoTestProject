@@ -89,16 +89,16 @@ public class TC003_DDT extends BaseClass{
 //				BaseClass.implicitWait(driver, 5);
 //				Thread.sleep(5000);
 
-		        hp.selectContryDropDown(country);
-				logger.info("country drop down has been selected to India");
-				Thread.sleep(3000);
-				BasePage.captureScreenshot(driver);
-				
-				
-				hp.enterDate(driver, date);
-				logger.info("date has been entered manually from excel sheet");
-				Thread.sleep(3000);
-				
+//		        hp.selectContryDropDown(country);
+//				logger.info("country drop down has been selected to India");
+//				Thread.sleep(3000);
+//				BasePage.captureScreenshot(driver);
+//				
+//				
+//				hp.enterDate(driver, date);
+//				logger.info("date has been entered manually from excel sheet");
+//				Thread.sleep(3000);
+//				
 //				hp.enterCurrentDate(driver);
 //				logger.info("current date has been entered");
 //				Thread.sleep(3000);
@@ -151,8 +151,22 @@ public class TC003_DDT extends BaseClass{
 //				hp.switchOldWindow(driver);
 //				Thread.sleep(5000);
 		
+		
+		if(!(test.isEmpty()))
+		{
 		System.out.println(test);
+		String[] partone = test.split("-");
+		System.out.println("splited number is "+ partone[1] );
+		}
+		
+		if(!(testt.isBlank()))
+		{
 		System.out.println(testt);
+		String[] parttwo = testt.split("-");
+		System.out.println("splited second number is "+ parttwo[1]);
+		}
+
+		
 		
 		}
 		catch(Exception e)

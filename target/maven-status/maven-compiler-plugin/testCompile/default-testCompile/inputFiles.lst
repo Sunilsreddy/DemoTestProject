@@ -8,5 +8,8 @@ C:\Users\user\eclipse-workspace\DemoTestProject\src\test\java\testCases\TC002_Ha
 C:\Users\user\eclipse-workspace\DemoTestProject\src\test\java\testCases\TC003_DDT.java
 C:\Users\user\eclipse-workspace\DemoTestProject\src\test\java\testCases\TC004_HandleAlerts.java
 C:\Users\user\eclipse-workspace\DemoTestProject\src\test\java\testCases\TC005_HandleTables.java
+C:\Users\user\eclipse-workspace\DemoTestProject\src\test\java\testCases\TC006_HandleFrames.java
+C:\Users\user\eclipse-workspace\DemoTestProject\src\test\java\testCases\TC007_WriteExcel.java
+C:\Users\user\eclipse-workspace\DemoTestProject\src\test\java\testCases\TC008_FileUpload.java
 C:\Users\user\eclipse-workspace\DemoTestProject\src\test\java\utilities\DataProviders.java
 C:\Users\user\eclipse-workspace\DemoTestProject\src\test\java\utilities\ExtentReportManager.java

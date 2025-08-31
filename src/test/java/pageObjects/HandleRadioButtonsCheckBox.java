@@ -25,12 +25,12 @@ public class HandleRadioButtonsCheckBox extends BasePage {
 	WebElement dayMonday;
 	
 	
-	
-	
-	
+		
 	
 	public void genderSelect(String gender)
 	{
+		if(!(gender.isEmpty()))
+		{
 		if(gender.toLowerCase()=="male")
 		{
 	           if(!maleGender.isSelected())
@@ -44,12 +44,15 @@ public class HandleRadioButtonsCheckBox extends BasePage {
 	    		  femaleGender.click();
 		      }
 	      }
-	}
+		}
+		}
 	}
 	
 	
 	public void daySelect(String day)
 	{
+		if(!(day.isEmpty()))
+		{
 		switch (day.toLowerCase()) {
 		case "sunday":
 			if ( !daySunday.isSelected() )
@@ -64,6 +67,7 @@ public class HandleRadioButtonsCheckBox extends BasePage {
 		default:
 		    System.out.println("Select correct day");
 		}
+	}
 	}
 	
 	
