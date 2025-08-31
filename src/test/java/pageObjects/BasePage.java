@@ -295,7 +295,7 @@ public class BasePage {
 
 		
        //Write test results to excel sheet
-		public static void writeExcelTestResults(WebDriver driver, String testName, int optyNumber, int quoteNumber, String testRusult ) throws IOException
+		public void writeExcelTestResults(WebDriver driver, String testName, int optyNumber, int quoteNumber, String testRusult ) throws IOException
 		{
 			// workbook object
 	        XSSFWorkbook workbook = new XSSFWorkbook();

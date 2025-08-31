@@ -19,13 +19,14 @@ import pageObjects.BasePage;
 import utilities.DataProviders;
 
 public class TC003_DDT extends BaseClass{
-	 	 
+
 	
 	@Test(dataProvider="excelData", dataProviderClass=DataProviders.class, groups={"Regression", "Master"})
-	public void verify_FirstTest(String username, String email, String phonenumber, String gender, String day, String country, String test, String testt, String date) throws InterruptedException
+	public void verify_FirstTest(String username, String email, String phonenumber, String gender, String day, String country, String test, String testt, String date) throws InterruptedException, IOException
 	{
-		HomePage hp=new HomePage(driver);
-		HandleRadioButtonsCheckBox hrc= new HandleRadioButtonsCheckBox(driver);		
+		BasePage bp=new BasePage(driver); 
+	 	HomePage hp=new HomePage(driver);
+		HandleRadioButtonsCheckBox hrc= new HandleRadioButtonsCheckBox(driver);
 		logger.info("Started TC003_DDT Test Execution Started");
 		
 		try
@@ -165,7 +166,17 @@ public class TC003_DDT extends BaseClass{
 		String[] parttwo = testt.split("-");
 		System.out.println("splited second number is "+ parttwo[1]);
 		}
-
+		
+		
+ 
+		//Write reults to excel sheet after execution
+//		String str="My Test";
+//        int opptynum=98453;
+//        int quotenum=63609833;
+//        String exeRes="Pass";	
+//        bp.writeExcelTestResults(driver, str, opptynum, quotenum, exeRes);
+		
+		
 		
 		
 		}
@@ -175,6 +186,8 @@ public class TC003_DDT extends BaseClass{
 			logger.debug("Debug logs");
 			
 		}
+		
+		
 		
 	}	
 
