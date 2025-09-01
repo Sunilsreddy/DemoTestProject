@@ -1,64 +1,87 @@
 package utilities;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.annotations.DataProvider;
-
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellType;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.annotations.DataProvider;
-
-import java.io.FileInputStream;
-import java.io.IOException;
 
 public class DataProviders {
+
+	//DataProvider 1
 	
-	//DataProvider1
-	@DataProvider(name="excelData")	
-	public Object[][] excelDataProvider() throws IOException {
-		Object[][] arrObj=getExcelData(".\\testData\\TestDataSheet.xlsx", "Test"); //Excel sheet location and tab name
-		return arrObj;
-	}
-	public String[][] getExcelData(String fileName, String sheetName) throws IOException {
-		String[][] data=null;
-		try {
-			FileInputStream fis=new FileInputStream(fileName);
-			XSSFWorkbook workbook=new XSSFWorkbook(fis);
-			XSSFSheet sheet=workbook.getSheet(sheetName);
-			XSSFRow row=sheet.getRow(0);
-			
-			int noOfRows=sheet.getPhysicalNumberOfRows();
-			int noOfCols=row.getLastCellNum();
-			Cell cell;
-			data=new String[noOfRows - 1][noOfCols];
-			
-			for(int i=3; i<noOfRows; i++)
+	@DataProvider(name="excelData")
+	public String [][] getData() throws IOException
+	{
+		String path=".\\testData\\TestDataSheet.xlsx";//taking xl file from testData
+				
+		ExcelUtility xlutil=new ExcelUtility(path);//creating an object for XLUtility
+		
+		int totalrows=xlutil.getRowCount("Sheet1");	
+		int totalcols=xlutil.getCellCount("Sheet1",1);
+				
+		String logindata[][]=new String[totalrows][totalcols];//created for two dimension array which can store the data user and password
+		
+		for(int i=3;i<=totalrows;i++)  //1   //read the data from xl storing in two deminsional array
+		{		
+			for(int j=0;j<totalcols;j++)  //0    i is rows j is col
 			{
-				for (int j=0; j<noOfCols; j++)
-				{
-					row=sheet.getRow(i);
-					cell=row.getCell(j);
-					data[i - 1][j]=cell.getStringCellValue();
-				}
+				logindata[i-1][j]= xlutil.getCellData("Sheet1",i, j);  //1,0
 			}
-			
-		} catch (Exception e) {
-			System.out.println("The exception is:" + e.getMessage());
 		}
-		return data;		
+	return logindata;//returning two dimension array
+				
 	}
-}
 	
-	//DataProvider1 - Use above 'DataProvide1' or this function - Both are same and working
+}	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	//DataProvider 2
+//	@DataProvider(name="excelData")	
+//	public Object[][] excelDataProvider() throws IOException {
+//		Object[][] arrObj=getExcelData(".\\testData\\TestDataSheet.xlsx", "Test"); //Excel sheet location and tab name
+//		return arrObj;
+//	}
+//	public String[][] getExcelData(String fileName, String sheetName) throws IOException {
+//		String[][] data=null;
+//		try {
+//			FileInputStream fis=new FileInputStream(fileName);
+//			XSSFWorkbook workbook=new XSSFWorkbook(fis);
+//			XSSFSheet sheet=workbook.getSheet(sheetName);
+//			XSSFRow row=sheet.getRow(0);
+//			
+//			int noOfRows=sheet.getPhysicalNumberOfRows();
+//			int noOfCols=row.getLastCellNum();
+//			Cell cell;
+//			data=new String[noOfRows - 1][noOfCols];
+//			
+//			for(int i=3; i<noOfRows; i++)
+//			{
+//				for (int j=0; j<noOfCols; j++)
+//				{
+//					row=sheet.getRow(i);
+//					cell=row.getCell(j);
+//					data[i - 1][j]=cell.getStringCellValue();
+//				}
+//			}
+//			
+//		} catch (Exception e) {
+//			System.out.println("The exception is:" + e.getMessage());
+//		}
+//		return data;		
+//	}
+//}
+	
+	//DataProvider3 - Use above 'DataProvide1' or this function - Both are same and working
 //	@DataProvider(name = "excelData")
 //    public Object[][] getExcelData() throws IOException {
 //        String excelFilePath = ".\\testData\\TestDataSheet.xlsx"; // Specify your Excel file path
@@ -111,17 +134,8 @@ public class DataProviders {
 
 //}
 
-	
 
-
-
-
-
-	//DataProvider 2
-		
-	
-	
-	//DataProvider 3
 	
 	//DataProvider 4
 	
+	//DataProvider 5

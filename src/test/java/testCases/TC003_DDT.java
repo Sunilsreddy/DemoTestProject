@@ -18,6 +18,7 @@ import pageObjects.HomePage;
 import pageObjects.BasePage;
 import utilities.DataProviders;
 
+
 public class TC003_DDT extends BaseClass{
 
 	
@@ -28,6 +29,7 @@ public class TC003_DDT extends BaseClass{
 	 	HomePage hp=new HomePage(driver);
 		HandleRadioButtonsCheckBox hrc= new HandleRadioButtonsCheckBox(driver);
 		logger.info("Started TC003_DDT Test Execution Started");
+		
 		
 		try
 		{			
@@ -90,15 +92,15 @@ public class TC003_DDT extends BaseClass{
 //				BaseClass.implicitWait(driver, 5);
 //				Thread.sleep(5000);
 
-//		        hp.selectContryDropDown(country);
-//				logger.info("country drop down has been selected to India");
-//				Thread.sleep(3000);
-//				BasePage.captureScreenshot(driver);
+		        hp.selectContryDropDown(country);
+				logger.info("country drop down has been selected to India");
+				Thread.sleep(3000);
+				BasePage.captureScreenshot(driver);
 //				
 //				
-//				hp.enterDate(driver, date);
-//				logger.info("date has been entered manually from excel sheet");
-//				Thread.sleep(3000);
+				hp.enterDate(driver, date);
+				logger.info("date has been entered manually from excel sheet");
+				Thread.sleep(3000);
 //				
 //				hp.enterCurrentDate(driver);
 //				logger.info("current date has been entered");
@@ -156,29 +158,25 @@ public class TC003_DDT extends BaseClass{
 		if(!(test.isEmpty()))
 		{
 		System.out.println(test);
-		String[] partone = test.split("-");
-		System.out.println("splited number is "+ partone[1] );
+		System.out.println("welcome to "+test);
 		}
 		
 		if(!(testt.isBlank()))
 		{
 		System.out.println(testt);
-		String[] parttwo = testt.split("-");
-		System.out.println("splited second number is "+ parttwo[1]);
+		System.out.println("welcome to "+testt);
 		}
 		
 		
  
 		//Write reults to excel sheet after execution
-//		String str="My Test";
-//        int opptynum=98453;
-//        int quotenum=63609833;
-//        String exeRes="Pass";	
-//        bp.writeExcelTestResults(driver, str, opptynum, quotenum, exeRes);
+		String str="My Test";
+        int opptynum=98453;
+        int quotenum=63609833;
+        String exeRes="Pass";	
+        bp.writeExcelTestResults(driver, str, opptynum, quotenum, exeRes);
 		
-		
-		
-		
+			
 		}
 		catch(Exception e)
 		{

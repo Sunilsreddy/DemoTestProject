@@ -11,5 +11,7 @@ C:\Users\user\eclipse-workspace\DemoTestProject\src\test\java\testCases\TC005_Ha
 C:\Users\user\eclipse-workspace\DemoTestProject\src\test\java\testCases\TC006_HandleFrames.java
 C:\Users\user\eclipse-workspace\DemoTestProject\src\test\java\testCases\TC007_WriteExcel.java
 C:\Users\user\eclipse-workspace\DemoTestProject\src\test\java\testCases\TC008_FileUpload.java
+C:\Users\user\eclipse-workspace\DemoTestProject\src\test\java\testCases\TC009_Assert.java
 C:\Users\user\eclipse-workspace\DemoTestProject\src\test\java\utilities\DataProviders.java
+C:\Users\user\eclipse-workspace\DemoTestProject\src\test\java\utilities\ExcelUtility.java
 C:\Users\user\eclipse-workspace\DemoTestProject\src\test\java\utilities\ExtentReportManager.java
