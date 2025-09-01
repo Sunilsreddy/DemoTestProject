@@ -189,7 +189,15 @@ public class BasePage {
 	   //alert.dismiss();
 	    }
 		
+		//Mouse hover and click element
+		public static void mouseHover(WebDriver driver, WebElement mainElement) 
+		{
+			Actions action = new Actions(driver);
+			action.moveToElement(mainElement).contextClick().perform();
+		}		
 		
+		
+		//Mouse hover and click element
 		public static void mouseHoverClick(WebDriver driver, WebElement mainElement, WebElement subElementToClick) 
 		{
 			Actions action = new Actions(driver);
