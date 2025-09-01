@@ -1,5 +1,10 @@
 package pageObjects;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -303,6 +308,29 @@ public class HomePage extends BasePage {
 	{
 		driver.findElement(By.xpath("//input[@id='filesToUpload']")).sendKeys(fileLocation1+"\n"+fileLocation2);
 	}
+	
+	
+	//File upload using AutoIT
+	public void fileUploadAutoIT(WebDriver driver, String fileLocation) throws InterruptedException, AWTException
+	{
+	//Step 1: Copy the file path to the clipboard
+		StringSelection filePath=new StringSelection(fileLocation);
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(filePath, null);
+		Thread.sleep(3000);
+	//Step2: Ctrl +V action perform on clipboard
+		Robot rb=new Robot();
+		rb.keyPress(KeyEvent.VK_CONTROL);  //For Mac: rb.keyPress(KeyEvent.VK_META);
+		rb.keyPress(KeyEvent.VK_V);
+		rb.keyRelease(KeyEvent.VK_V);
+		rb.keyRelease(KeyEvent.VK_CONTROL);
+		Thread.sleep(3000);
+	//Step3: click on return/enter key
+		rb.keyPress(KeyEvent.VK_ENTER);
+		rb.keyRelease(KeyEvent.VK_ENTER);
+		Thread.sleep(3000);			
+	}
+	
+	
 	
 //---------------------------------------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------------------------------------

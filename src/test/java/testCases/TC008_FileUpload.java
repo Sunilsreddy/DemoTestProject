@@ -21,24 +21,24 @@ public class TC008_FileUpload extends BaseClass{
 	Thread.sleep(3000);
 	
 //	//Single file upload
-//	driver.findElement(By.xpath("//input[@id='filesToUpload']")).sendKeys("C:\\uploadTest_1.txt");
+//	driver.findElement(By.xpath("//input[@id='filesToUpload']")).sendKeys("C:\\Users\\uploadTest_1.txt");
 //	Thread.sleep(3000);
-//	
+	
 //	//Multiple file upload 
-//	String file1="C:\\uploadTest_1.txt";
-//	String file2="C:\\uploadTest_2.txt";
+//	String file1="C:\\Users\\uploadTest_1.txt";
+//	String file2="C:\\Users\\uploadTest_2.txt";
 //	driver.findElement(By.xpath("//input[@id='filesToUpload']")).sendKeys(file1+"\n"+file2);
 //	Thread.sleep(3000);
-////		
+		
 	
-//	String fileLocation="C:\\uploadTest_1.txt";
-//	hp.fileUpload(driver, fileLocation);
-//	Thread.sleep(3000);
-	
-	String fileLocation1="C:\\uploadTest_1.txt";
-	String fileLocation2="C:\\uploadTest_2.txt";
-	hp.fileUploadMultiple(driver, fileLocation1,fileLocation2);
+	String fileLocation="C:\\Users\\uploadTest_1.txt";
+	hp.fileUpload(driver, fileLocation);
 	Thread.sleep(3000);
+	
+//	String fileLocation1="C:\\Users\\uploadTest_1.txt";
+//	String fileLocation2="C:\\Users\\uploadTest_2.txt";
+//	hp.fileUploadMultiple(driver, fileLocation1,fileLocation2);
+//	Thread.sleep(3000);
 	
 	
 	}
