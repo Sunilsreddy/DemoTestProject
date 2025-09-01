@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="RetryAnalyzerFailedTestSuite">
+    <listeners>
+        <listener class-name="retryAnalyzer.RetryListener" />
+    </listeners>
+    <test name="SeleniumTests">
+        <classes>
+            <class name="retryAnalyzer.myTest" />
+        </classes>
+    </test>
+</suite>

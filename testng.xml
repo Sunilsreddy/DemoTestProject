@@ -4,6 +4,7 @@
 
 	<listeners>
 		<listener class-name="utilities.ExtentReportManager"></listener>
+		<listener class-name="retryAnalyzer.RetryListener" />
 	</listeners>
 
   <test thread-count="5" name="Test">
@@ -16,7 +17,7 @@
      <class name="testCases.TC003_DDT"/>
      <!--<class name="testCases.TC0010_FileUploadAutoIT"/>-->
       <!--<class name="testCases.TC007_WriteExcel"/> --> 
-      <!--<class name="testCases.TC006_HandleFrames"/>   -->   		
+      <!--<class name="testCases.TC006_HandleFrames"/> -->  		
       <!-- <class name="testCases.TC004_HandleAlerts"/> -->
       <!-- <class name="testCases.TC005_HandleTables"/> -->
       <!-- <class name="testCases.TC008_FileUpload"/> -->

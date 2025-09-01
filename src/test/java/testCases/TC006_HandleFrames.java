@@ -29,7 +29,7 @@ public class TC006_HandleFrames extends BaseClass{
 //	
 //	 driver.switchTo().defaultContent();
 //	
-	
+
 	 //Switch to frame
 	 hp.switchToFrame(driver);
 	 //perform the operation

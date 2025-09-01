@@ -34,7 +34,7 @@ public class TC003_DDT extends BaseClass{
 		try
 		{			
 		
-		hp.clickHome();
+	   	hp.clickHome();
 		logger.info("Clicked on Homepage");
 		
 		hp.enterName(username); //entering user name from excel sheet

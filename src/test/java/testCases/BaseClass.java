@@ -97,6 +97,7 @@ public class BaseClass {
 		driver.get(p.getProperty("baseURL")); //reading url from properties file
 		logger.info("Application url loaded");
 		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
 	}
 	
 	
