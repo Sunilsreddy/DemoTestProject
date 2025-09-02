@@ -2,7 +2,13 @@ C:\Users\user\eclipse-workspace\DemoTestProject\src\test\java\pageObjects\BasePa
 C:\Users\user\eclipse-workspace\DemoTestProject\src\test\java\pageObjects\encodePwd.java
 C:\Users\user\eclipse-workspace\DemoTestProject\src\test\java\pageObjects\HandleRadioButtonsCheckBox.java
 C:\Users\user\eclipse-workspace\DemoTestProject\src\test\java\pageObjects\HomePage.java
+C:\Users\user\eclipse-workspace\DemoTestProject\src\test\java\retryAnalyzer\myTest.java
+C:\Users\user\eclipse-workspace\DemoTestProject\src\test\java\retryAnalyzer\RetryAnalyzer.java
+C:\Users\user\eclipse-workspace\DemoTestProject\src\test\java\retryAnalyzer\RetryListener.java
+C:\Users\user\eclipse-workspace\DemoTestProject\src\test\java\testBase\BaseEngine.java
 C:\Users\user\eclipse-workspace\DemoTestProject\src\test\java\testCases\BaseClass.java
+C:\Users\user\eclipse-workspace\DemoTestProject\src\test\java\testCases\TC0010_FileUploadAutoIT.java
+C:\Users\user\eclipse-workspace\DemoTestProject\src\test\java\testCases\TC0011_CaptureFailedScreenShots.java
 C:\Users\user\eclipse-workspace\DemoTestProject\src\test\java\testCases\TC001_HomePageTest.java
 C:\Users\user\eclipse-workspace\DemoTestProject\src\test\java\testCases\TC002_HandleRadioButtonCheckBox.java
 C:\Users\user\eclipse-workspace\DemoTestProject\src\test\java\testCases\TC003_DDT.java

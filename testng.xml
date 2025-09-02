@@ -17,7 +17,8 @@
      <class name="testCases.TC003_DDT"/>
      <!--<class name="testCases.TC0010_FileUploadAutoIT"/>-->
       <!--<class name="testCases.TC007_WriteExcel"/> --> 
-      <!--<class name="testCases.TC006_HandleFrames"/> -->  		
+      <!--<class name="testCases.TC0011_CaptureFailedScreenShots"/>-->	
+      <!--<class name="testCases.TC006_HandleFrames"/>-->
       <!-- <class name="testCases.TC004_HandleAlerts"/> -->
       <!-- <class name="testCases.TC005_HandleTables"/> -->
       <!-- <class name="testCases.TC008_FileUpload"/> -->

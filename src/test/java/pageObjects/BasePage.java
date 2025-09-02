@@ -32,12 +32,14 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.ITestResult;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.io.FileHandler;
 
 public class BasePage {
 	
@@ -293,15 +295,14 @@ public class BasePage {
 		
 				
 		//Direct method to capture screenshots
-		public static void captureScreenshot(WebDriver driver) throws IOException {
+		public void captureScreenshot(WebDriver driver) throws IOException {
 			File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 			// Now you can do whatever you need to do with it, for example copy somewhere
 			String timeNote=new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
 			FileUtils.copyFile(scrFile, new File(".\\screenshots\\screenshot"+"_"+ timeNote +".png"));
 	    }
 		
-
-		
+						
        //Write test results to excel sheet
 		public void writeExcelTestResults(WebDriver driver, String testName, int optyNumber, int quoteNumber, String testRusult ) throws IOException
 		{

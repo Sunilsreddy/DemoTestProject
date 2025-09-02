@@ -39,7 +39,7 @@ public class TC003_DDT extends BaseClass{
 		
 		hp.enterName(username); //entering user name from excel sheet
 		logger.info("Entered username" + username); 
-		BasePage.captureScreenshot(driver);
+		bp.captureScreenshot(driver);
 		
 		
 		hp.enterEmail(email); //entering email from excel sheet
@@ -95,7 +95,7 @@ public class TC003_DDT extends BaseClass{
 		        hp.selectContryDropDown(country);
 				logger.info("country drop down has been selected to India");
 				Thread.sleep(3000);
-				BasePage.captureScreenshot(driver);
+				bp.captureScreenshot(driver);
 //				
 //				
 				hp.enterDate(driver, date);

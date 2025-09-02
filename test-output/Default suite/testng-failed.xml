@@ -3,13 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testCases.TC007_WriteExcel">
+      <class name="testCases.TC006_HandleFrames">
         <methods>
           <include name="setup"/>
+          <include name="captureFailedScreenshot"/>
           <include name="tearDown"/>
-          <include name="verifWriteExcel"/>
+          <include name="verifFrames"/>
         </methods>
-      </class> <!-- testCases.TC007_WriteExcel -->
+      </class> <!-- testCases.TC006_HandleFrames -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
